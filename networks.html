@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body>
+        <div class="card">
+            <img src="https://avatars.githubusercontent.com/u/88355379?v=4" alt="foto de perfil">
+            
+        </div>
+    </body>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            width: 20rem;
+            max-width: 90%;
+            background-color: red;
+            display: grid;
+            border-radius: 10px;
+            padding: 1rem;
+        }
+        .card img {
+            --deg: 270deg;
+            height: 5rem;
+            width: 5rem;
+            border-radius: 50%;
+            margin: 0 auto;
+            background: conic-gradient(red var(--deg), white calc(var(--deg) + 10deg));
+            padding: 5px;
+            box-shadow: 0px 0px 5px 2px;
+        }
+    </style>
+</html>
