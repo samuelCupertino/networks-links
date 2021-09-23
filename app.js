@@ -8,4 +8,4 @@ app.use(express.static(__dirname + '/views'))
 
 app.get('/[a-z]{0,}', (req, res) => res.render('networks'))
 
-app.listen(8080, ()=> console.log('server on!'))
+app.listen(8010, ()=> console.log('server on!'))

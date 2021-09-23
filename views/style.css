@@ -11,7 +11,11 @@ body {
     font-family: monospace;
     overflow: hidden;
 }
-.card {
+section.card-wapper {
+    display: flex;
+    justify-content: center;
+}
+section.card-wapper .card {
     width: 25rem;
     max-width: calc(100% - 4rem);
     display: flex;
@@ -24,10 +28,44 @@ body {
     overflow: hidden;
     transform: scale(0);
     animation: showingCard 1s 0.5s forwards;
+    transition: 1s;
 }
 @keyframes showingCard {
     to { transform: scale(1) }
 }
+section.card-wapper .card:not(:last-child) {
+    opacity: 0.2;
+}
+section.card-wapper .card:not(:first-child) {
+    margin-left: -17%;
+}
+section.card-wapper .card.active {
+    transform: scale(1);
+    animation: swipeCard 1.5s 1s infinite;
+}
+@keyframes swipeCard {
+    0%, 100% {
+        margin-left: -17%;
+    }
+    50% {
+        margin-left: -34%;
+    }
+}
+
+/* section.card-wapper .card.active {
+    background-color: red;
+    transform: scale(1) translate(0, 0);
+    animation: swipeCard 1s 1s infinite;
+}
+@keyframes swipeCard {
+    from {
+        transform: scale(1) translate(0%, 50%) !important;
+    }
+    to {
+        transform: scale(1) translate(-100%, 50%) !important;
+    }
+} */
+
 .card img {
     --deg: 270deg;
     height: 8rem;
