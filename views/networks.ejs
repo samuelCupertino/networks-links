@@ -53,4 +53,36 @@
             </div>
         </section>
     </body>
+    <script>
+        const swipeCard = () => {
+            const cardWapperEl = document.querySelector(`.card-wapper`)
+            const cardLastEl = cardWapperEl.querySelector(`.card:last-child`)
+            cardWapperEl.insertAdjacentElement('afterBegin', cardLastEl)
+        }
+
+        const swipeEvent = {
+            arrSwipe: [],
+            
+            check() {
+                const strSwipe = JSON.stringify(this.arrSwipe)
+                const strSwipeASC = JSON.stringify(this.arrSwipe.sort())
+                const strSwipeDESC = JSON.stringify(this.arrSwipe.sort((a, b)=> b-a))
+
+                if(strSwipe == strSwipeASC) {
+                    console.log('to right')
+                }
+                else if(strSwipe == strSwipeDESC) {
+                    console.log('to left')
+                }
+            },
+            
+            init() {
+                const cardWapperEl = document.querySelector('.card-wapper')
+                cardWapperEl.addEventListener('touchstart', ()=> this.arrSwipe = [])
+                cardWapperEl.addEventListener('touchmove', ()=> this.arrSwipe.push(event.touches[0].pageX))
+                cardWapperEl.addEventListener('touchend', ()=> this.check())
+            }
+        }
+        swipeEvent.init()
+    </script>
 </html>
