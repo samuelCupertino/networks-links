@@ -63,12 +63,11 @@ body {
     100% { background: conic-gradient(var(--color-secondary) 100%, var(--color-primary) 0) }
 }
 .card .networks {
-    max-height: 0rem;
+    max-height: 0;
     transition: 1.5s;
     animation: showingNetworks 2s 1.5s forwards;
 }
 @keyframes showingNetworks {
-    from { max-height: 0 }
     to { max-height: 30rem }
 }
 .card .networks a {
