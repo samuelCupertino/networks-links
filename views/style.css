@@ -23,7 +23,7 @@ body {
     backdrop-filter: blur(2px); 
     overflow: hidden;
     transform: scale(0);
-    animation: showingCard 1s forwards;
+    animation: showingCard 1s 0.5s forwards;
 }
 @keyframes showingCard {
     to { transform: scale(1) }
@@ -37,7 +37,7 @@ body {
     padding: 4px;
     box-shadow: 0px 0px 5px 1px var(--color-primary);
     background: conic-gradient(var(--color-secondary) 0%, var(--color-primary) 0);
-    animation: imgLoading 1s 1s forwards;
+    animation: imgLoading 1s 1.5s forwards;
 }
 @keyframes imgLoading {
     0% { background: conic-gradient(var(--color-secondary) 0%, var(--color-primary) 0) }
@@ -65,7 +65,7 @@ body {
 .card .networks {
     max-height: 0rem;
     transition: 1.5s;
-    animation: showingNetworks 2s 1s forwards;
+    animation: showingNetworks 2s 1.5s forwards;
 }
 @keyframes showingNetworks {
     from { max-height: 0 }
@@ -95,7 +95,7 @@ body {
     padding-right: 0;
     width: 0;
     opacity: 0;
-    animation: showingIconNetworks 1.5s 1s forwards;
+    animation: showingIconNetworks 1.5s 1.5s forwards;
 }
 @keyframes showingIconNetworks {
     to { 
@@ -107,7 +107,7 @@ body {
 .card .networks a span {
     margin: 0 auto;
     opacity: 0;
-    animation: showingTextNetworks 2s 1s forwards;
+    animation: showingTextNetworks 2s 1.5s forwards;
 }
 @keyframes showingTextNetworks {
     to { 
