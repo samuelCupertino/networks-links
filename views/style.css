@@ -15,11 +15,11 @@ body {
     width: 100vw;
     overflow: hidden;
 }
-section.card-wapper {
+/* section.card-wapper {
     display: flex;
     justify-content: center;
     margin-right: -22rem;
-}
+} */
 section.card-wapper .card {
     width: 19rem;
     display: flex;

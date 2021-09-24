@@ -6,10 +6,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Networks</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link
+  rel="stylesheet"
+  href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
+/>
+
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
         <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
-        <div class="background">
+        <div class="background_off">
             <div class="stars1"></div>
             <div class="stars2"></div>
             <div class="stars3"></div>
@@ -102,6 +109,28 @@
                 cardWapperEl.addEventListener('touchend', ()=> this.check())
             }
         }
-        swipeEvent.init()
+        // swipeEvent.init()
+
+        const swiper = new Swiper('.card-wapper', {
+            // Optional parameters
+            direction: 'vertical',
+            loop: true,
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // And if we need scrollbar
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+        })
     </script>
 </html>
