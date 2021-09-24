@@ -48,6 +48,9 @@ section.card-wapper.swipe .card {
     animation: swipingCards 1s;
 }
 @keyframes swipingCards {
+    0% {
+        margin-right: -15px;
+    } 
     50% {
         margin-right: -10px;
     } 
