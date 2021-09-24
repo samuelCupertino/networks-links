@@ -15,6 +15,7 @@ body {
     background-color: #090a0f;
 }
 .swiper {
+    max-width: calc(100% - 2rem);
     width: var(--card-width);
     height: fit-content;
     display: flex;
@@ -39,6 +40,9 @@ body {
 }
 .swiper-3d .swiper-slide-shadow {
     background: none;
+}
+.swiper-pagination .swiper-pagination-bullet {
+    background-color: var(--color-primary);
 }
 
 .card {
