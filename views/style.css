@@ -44,6 +44,14 @@ section.card-wapper.swipe .card {
 section.card-wapper .card:not(:last-child) {
     opacity: 0.2;
 }
+section.card-wapper.swipe .card {
+    animation: swipingCards 1s;
+}
+@keyframes swipingCards {
+    50% {
+        margin-right: -10px;
+    } 
+}
 section.card-wapper.swipe .card:first-child {
     transform: scale(1);
     animation: swipingCard 1.5s forwards;
