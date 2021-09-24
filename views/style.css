@@ -11,6 +11,9 @@ body {
     font-family: monospace;
     overflow: hidden;
 }
+.card-container {
+    width: 100vw;
+}
 section.card-wapper {
     display: flex;
     justify-content: center;
@@ -37,7 +40,7 @@ section.card-wapper .card:not(:last-child) {
     opacity: 0.2;
 }
 section.card-wapper .card:not(:first-child) {
-    margin-left: -17%;
+    margin-left: -67%;
 }
 section.card-wapper .card.active {
     transform: scale(1);
