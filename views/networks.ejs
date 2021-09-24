@@ -57,6 +57,7 @@
                 ? ['.card:last-child','afterBegin'] : ['.card:first-child','beforeend']
             const cardEl = cardWapperEl.querySelector(cardSel)
             cardWapperEl.insertAdjacentElement(where, cardEl)
+            cardWapperEl.classList.add('swipe')
         }
 
         const swipeEvent = {

@@ -18,10 +18,10 @@ body {
 section.card-wapper {
     display: flex;
     justify-content: center;
+    margin-right: -22rem;
 }
 section.card-wapper .card {
     width: 19rem;
-    /* max-width: calc(100% - 4rem); */
     display: flex;
     flex-direction: column;
     background: linear-gradient(325deg, rgb(0 177 114 / 25%), rgb(0 162 255 / 25%));
@@ -31,8 +31,12 @@ section.card-wapper .card {
     backdrop-filter: blur(2px); 
     overflow: hidden;
     transform: scale(0);
+    margin-left: -22rem;
     animation: showingCard 1s 0.5s forwards;
-    transition: 1s;
+}
+section.card-wapper.swipe .card {
+    animation: none;
+    transform: scale(1)
 }
 @keyframes showingCard {
     to { transform: scale(1) }
@@ -40,35 +44,6 @@ section.card-wapper .card {
 section.card-wapper .card:not(:last-child) {
     opacity: 0.2;
 }
-section.card-wapper .card:not(:first-child) {
-    margin-left: -22rem;
-}
-section.card-wapper .card.active {
-    transform: scale(1);
-    animation: swipeCard 1.5s 1s infinite;
-}
-@keyframes swipeCard {
-    0%, 100% {
-        margin-left: -17%;
-    }
-    50% {
-        margin-left: -34%;
-    }
-}
-
-/* section.card-wapper .card.active {
-    background-color: red;
-    transform: scale(1) translate(0, 0);
-    animation: swipeCard 1s 1s infinite;
-}
-@keyframes swipeCard {
-    from {
-        transform: scale(1) translate(0%, 50%) !important;
-    }
-    to {
-        transform: scale(1) translate(-100%, 50%) !important;
-    }
-} */
 
 .card img {
     --deg: 270deg;
@@ -80,6 +55,9 @@ section.card-wapper .card.active {
     box-shadow: 0px 0px 5px 1px var(--color-primary);
     background: conic-gradient(var(--color-secondary) 0%, var(--color-primary) 0);
     animation: imgLoading 1s 1.5s forwards;
+}
+section.card-wapper.swipe .card img {
+    animation: none;
 }
 @keyframes imgLoading {
     0% { background: conic-gradient(var(--color-secondary) 0%, var(--color-primary) 0) }
@@ -108,6 +86,10 @@ section.card-wapper .card.active {
     max-height: 0;
     transition: 1.5s;
     animation: showingNetworks 2s 1.5s forwards;
+}
+section.card-wapper.swipe .card .networks {
+    animation: none; 
+    max-height: 30rem
 }
 @keyframes showingNetworks {
     to { max-height: 30rem }
@@ -138,6 +120,12 @@ section.card-wapper .card.active {
     opacity: 0;
     animation: showingIconNetworks 1.5s 1.5s forwards;
 }
+section.card-wapper.swipe .card .networks a i {
+    animation: none; 
+    width: 25px;
+    padding-right: 15px;  
+    opacity: 1;  
+}
 @keyframes showingIconNetworks {
     to { 
         width: 25px;
@@ -149,6 +137,10 @@ section.card-wapper .card.active {
     margin: 0 auto;
     opacity: 0;
     animation: showingTextNetworks 2s 1.5s forwards;
+}
+section.card-wapper.swipe .card .networks a span {
+    animation: none; 
+    opacity: 1;  
 }
 @keyframes showingTextNetworks {
     to { 
