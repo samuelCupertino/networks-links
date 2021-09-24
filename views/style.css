@@ -40,7 +40,7 @@ section.card-wapper .card:not(:last-child) {
     opacity: 0.2;
 }
 section.card-wapper .card:not(:first-child) {
-    margin-left: -67%;
+    margin-left: -28rem;
 }
 section.card-wapper .card.active {
     transform: scale(1);
