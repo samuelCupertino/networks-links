@@ -51,28 +51,26 @@
         </div>
     </body>
     <script>
-        const swipeCard = () => {
-            const cardWapperEl = document.querySelector(`.card-wapper`)
-            const cardLastEl = cardWapperEl.querySelector(`.card:last-child`)
-            cardWapperEl.insertAdjacentElement('afterBegin', cardLastEl)
+        const swipeCard = dir => {
+            const cardWapperEl = document.querySelector('.card-wapper')
+            const [cardSel, where] = dir=='left' 
+                ? ['.card:last-child','afterBegin'] : ['.card:first-child','beforeend']
+            const cardEl = cardWapperEl.querySelector(cardSel)
+            cardWapperEl.insertAdjacentElement(where, cardEl)
         }
 
         const swipeEvent = {
-            arrSwipe: [],
-            
+            arrSwipe: [],            
             check() {
                 const strSwipe = JSON.stringify(this.arrSwipe)
                 const strSwipeASC = JSON.stringify(this.arrSwipe.sort())
                 const strSwipeDESC = JSON.stringify(this.arrSwipe.sort((a, b)=> b-a))
 
-                if(strSwipe == strSwipeASC) {
-                    console.log('to right')
-                }
-                else if(strSwipe == strSwipeDESC) {
-                    console.log('to left')
-                }
-            },
-            
+                if(strSwipe == strSwipeASC)               
+                    swipeCard('right')
+                else if(strSwipe == strSwipeDESC)
+                    swipeCard('left')
+            },            
             init() {
                 const cardWapperEl = document.querySelector('.card-wapper')
                 cardWapperEl.addEventListener('touchstart', ()=> this.arrSwipe = [])
