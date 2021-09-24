@@ -1,6 +1,8 @@
 :root {
     --color-primary: rgb(255 255 255 / 90%);
     --color-secondary: rgb(31 87 114 / 50%);
+    --card-height: 33rem;
+    --card-width: 25rem;
 }
 body {
     display: flex;
@@ -13,8 +15,8 @@ body {
     background-color: #090a0f;
 }
 .swiper {
-    width: 25rem;
-    height: 50rem;
+    width: var(--card-width);
+    height: fit-content;
     display: flex;
 }
 .swiper-slide {
@@ -60,7 +62,7 @@ body {
     }
     100% { 
         transform: scale(1);
-        height: 33rem; 
+        height: var(--card-height); 
     }
 }
 .card img {
