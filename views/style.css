@@ -13,14 +13,15 @@ body {
 }
 .card-container {
     width: 100vw;
+    overflow: hidden;
 }
 section.card-wapper {
     display: flex;
     justify-content: center;
 }
 section.card-wapper .card {
-    width: 25rem;
-    max-width: calc(100% - 4rem);
+    width: 19rem;
+    /* max-width: calc(100% - 4rem); */
     display: flex;
     flex-direction: column;
     background: linear-gradient(325deg, rgb(0 177 114 / 25%), rgb(0 162 255 / 25%));
@@ -40,7 +41,7 @@ section.card-wapper .card:not(:last-child) {
     opacity: 0.2;
 }
 section.card-wapper .card:not(:first-child) {
-    margin-left: -28rem;
+    margin-left: -22rem;
 }
 section.card-wapper .card.active {
     transform: scale(1);
