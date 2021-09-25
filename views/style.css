@@ -28,13 +28,6 @@ body {
     backdrop-filter: blur(2px); 
     transition: 1s;
 }
-/* .swiper-slide:not(:first-child):not([style]) .card {
-    display: none;
-    animation: subCards 0s 1s forwards;
-}
-@keyframes subCards {
-    to { display: flex }
-} */
 .swiper-slide.swiper-slide-active .card {
     opacity: 1;    
 }
