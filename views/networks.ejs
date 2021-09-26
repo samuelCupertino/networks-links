@@ -23,28 +23,26 @@
             <div class="swiper-slide swiper-slide-active">
                 <div class="card card-networks">
                     <img class="profile" src="https://avatars.githubusercontent.com/u/88355379?v=4" alt="foto de perfil">
-                    <!-- <div class="networks"> -->
-                        <a class="btn-network" href="https://www.linkedin.com/in/samuel-cupertino-618ba3218/" target="_blank">
-                            <i class="fab fa-linkedin-in"></i>
-                            <span>Linkedin</span>
-                        </a>
-                        <a class="btn-network" href="http://instagram.com/_u/samuelcupertino.dev" target="_blank">
-                            <i class="fab fa-instagram"></i>
-                            <span>Instagram</span>
-                        </a>
-                        <a class="btn-network" href="https://github.com/samuelCupertino" target="_blank">
-                            <i class="fab fa-github"></i>
-                            <span>GitHub</span>
-                        </a>
-                        <a class="btn-network" href="https://codepen.io/samuelCupertino" target="_blank">
-                            <i class="fab fa-codepen"></i>
-                            <span>CodePen</span>
-                        </a>
-                        <a class="btn-network" href="mailto:contato.samuelcupertino@gmail.com" target="_blank">
-                            <i class="far fa-envelope"></i>
-                            <span>E-mail</span>
-                        </a>
-                    <!-- </div> -->
+                    <a class="btn-network" href="https://www.linkedin.com/in/samuel-cupertino-618ba3218/" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                        <span>Linkedin</span>
+                    </a>
+                    <a class="btn-network" href="http://instagram.com/_u/samuelcupertino.dev" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                    <a class="btn-network" href="https://github.com/samuelCupertino" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a class="btn-network" href="https://codepen.io/samuelCupertino" target="_blank">
+                        <i class="fab fa-codepen"></i>
+                        <span>CodePen</span>
+                    </a>
+                    <a class="btn-network" href="mailto:contato.samuelcupertino@gmail.com" target="_blank">
+                        <i class="far fa-envelope"></i>
+                        <span>E-mail</span>
+                    </a>
                 </div>
             </div>
 
@@ -54,21 +52,15 @@
                     <div class="info">
                         <span class="user-name">Samuel Cupertino</span>
                         <div class="followers">
-                            <span>10</span>
+                            <span class="num">10</span>
                             <span>seguidores</span>
                         </div>
                         <div class="following">
-                            <span>6</span>
+                            <span class="num">6</span>
                             <span>seguindo</span>
                         </div>
                         <div class="avatars">
-                            <img src="https://avatars.githubusercontent.com/u/88355379?v=4" alt="">
-                            <img src="https://avatars.githubusercontent.com/u/88355379?v=4" alt="">
-                            <img src="https://avatars.githubusercontent.com/u/88355379?v=4" alt="">
-                            <img src="https://avatars.githubusercontent.com/u/88355379?v=4" alt="">
-                            <img src="https://avatars.githubusercontent.com/u/88355379?v=4" alt="">
-                            <img src="https://avatars.githubusercontent.com/u/88355379?v=4" alt="">
-                            <img src="https://avatars.githubusercontent.com/u/88355379?v=4" alt="">
+                            <!-- dynamic -->
                         </div>
                     </div>
                     <div class="separator">
@@ -113,10 +105,28 @@
             })
         }, 3000)
 
-        const cardGitHub = () => {
+        const cardGitHub = async user => {
+            const followersNumEl = document.querySelector('.card-github .followers .num')
+            const followingNumEl = document.querySelector('.card-github .following .num')
+            const avatarsEl = document.querySelector('.card-github .avatars')
+            
+            const userData = await fetch(`https://api.github.com/users/${user}`)
+            const {avatar_url, followers, following, public_repos} = await userData.json()
 
+            followersNumEl.textContent = followers
+            followingNumEl.textContent = following
+
+            const followersData = await fetch(`https://api.github.com/users/${user}/followers`)
+            const arrFollowers = await followersData.json()
+            
+            arrFollowers.forEach(({avatar_url, login}) =>
+                avatarsEl.insertAdjacentHTML('beforeend', `
+                    <img src="${avatar_url}" alt="${login}">                
+                `))
+
+            console.log(arrFollowers)
         }
-        cardGitHub()
+        cardGitHub('samuelCupertino')
     </script>
   </body>
 </html>
