@@ -4,6 +4,7 @@
     --card-height: 33rem;
     --card-width: 25rem;
 }
+
 body {
     display: flex;
     justify-content: center;
@@ -14,6 +15,7 @@ body {
     overflow: hidden;
     background-color: #090a0f;
 }
+
 .swiper {
     max-width: calc(100% - 2rem);
     width: var(--card-width);
@@ -40,36 +42,85 @@ body {
 
 .card {
     width: 100%;
-    height: 8.5rem;
+    height: 8rem;
     display: flex;
     flex-direction: column;
     background: linear-gradient(325deg, rgb(0 177 114 / 30%), rgb(0 162 255 / 30%));
     border-radius: 10px;
     border: 3px solid var(--color-secondary);
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 1rem 2rem;
     overflow: hidden;
     transform: scale(0);
-    opacity: 0.15;
+    opacity: 0.25;
     animation: showingCard 2.5s 0.5s forwards;
 }
 @keyframes showingCard {
     40% { 
         transform: scale(1);
-        height: 8.5rem;
+        height: 8rem;
     }
     100% { 
         transform: scale(1);
         height: var(--card-height); 
     }
 }
-.card img {
-    --deg: 270deg;
+.card img.profile {
     height: 8rem;
     width: 8rem;
     border-radius: 50%;
-    margin: 0 auto;
     padding: 4px;
     box-shadow: 0px 0px 5px 1px var(--color-primary);
+    background: conic-gradient(var(--color-secondary) 100%, var(--color-primary) 0)
+}
+.card a.btn-network {
+    background-color: rgb(255 255 255 / 25%);
+    border: 2px solid;
+    border-radius: 10px;
+    color: var(--color-primary);
+    font-size: 15pt;
+    text-decoration: none;
+    display: flex;
+    padding: 12px;
+    margin-top: 28px;
+    transition: 0.75s;
+}
+.card a.btn-network:hover {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    font-weight: bolder;
+}
+
+.card a.btn-network i {
+    font-size: 20pt;
+    position: absolute;
+    border-right: 1px solid;
+    padding-right: 0;
+    width: 0;
+    opacity: 0;
+    animation: showingIconNetworks 1.5s 1.5s forwards;
+}
+@keyframes showingIconNetworks {
+    to { 
+        width: 25px;
+        padding-right: 15px;  
+        opacity: 1;  
+    }
+}
+.card a.btn-network span {
+    margin: 0 auto;
+    opacity: 0;
+    animation: showingTextNetworks 2s 1.5s forwards;
+}
+@keyframes showingTextNetworks {
+    to { 
+        opacity: 1;  
+    }
+}
+
+
+/* CARD NETWORKS */
+.card-networks img.profile {
+    margin: 0 auto;
     background: conic-gradient(var(--color-secondary) 0%, var(--color-primary) 0);
     animation: imgLoading 1.5s 1.5s forwards;
 }
@@ -97,48 +148,84 @@ body {
     100% { background: conic-gradient(var(--color-secondary) 100%, var(--color-primary) 0) }
 }
 
-.card .networks a {
-    background-color: rgb(255 255 255 / 25%);
-    border: 2px solid;
-    border-radius: 10px;
+/* CARD GITHUB */
+.card-github {
+    display: grid;
+    grid-template-areas:
+        'img info'
+        'separator separator'
+        'repos repos'
+        'btn btn';
+    grid-template-rows: auto auto 1fr auto;
+    gap: 1rem;
+}
+.card-github img {
+    width: 100%;
+    grid-area: img;
+}
+.card-github .info {
+    grid-area: info;   
+    display: grid;
+    grid-template-areas:
+        'user-name user-name'
+        'followers following'
+        'avatars avatars';
+    align-items: center;
+    font-size: 12pt; 
+    color: var(--color-primary);
+}
+.card-github .info .user-name {
+    grid-area: user-name;
+    font-size: 16pt;
+    font-weight: bold;
+}
+.card-github .info .followers {
+    grid-area: followers;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card-github .info .following {
+    grid-area: following;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card-github .info .avatars {
+    grid-area: avatars;    
+    display: flex;
+    overflow: hidden;
+}
+.card-github .info .avatars img {
+    height: 2.25rem;
+    width: 2.25rem;
+    border-radius: 50%;
+    margin-right: -10px;
+    opacity: 0.75;
+}
+.card-github .separator {
+    grid-area: separator;
+    width: 100%;
+    position: relative;
+    height: 1px;
+    background-color: var(--color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+.card-github .separator i {
+    background-color: black;
     color: var(--color-primary);
     font-size: 15pt;
-    text-decoration: none;
-    display: flex;
-    padding: 12px;
-    margin-top: 25px;
-    transition: 0.75s;
+    border-radius: 50%;
 }
-.card .networks a:hover {
-    background-color: var(--color-primary);
-    color: var(--color-secondary);
-    font-weight: bolder;
+
+.card-github .repos {
+    grid-area: repos;    
 }
-.card .networks a i {
-    font-size: 20pt;
-    position: absolute;
-    border-right: 1px solid;
-    padding-right: 0;
-    width: 0;
-    opacity: 0;
-    animation: showingIconNetworks 1.5s 1.5s forwards;
-}
-@keyframes showingIconNetworks {
-    to { 
-        width: 25px;
-        padding-right: 15px;  
-        opacity: 1;  
-    }
-}
-.card .networks a span {
-    margin: 0 auto;
-    opacity: 0;
-    animation: showingTextNetworks 2s 1.5s forwards;
-}
-@keyframes showingTextNetworks {
-    to { 
-        opacity: 1;  
-    }
+.card-github .btn-network {
+    grid-area: btn;    
 }
 
 

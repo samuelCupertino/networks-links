@@ -3,10 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
     <title>Networks</title>
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/> -->
-    <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css"/>
@@ -14,62 +12,86 @@
 
   <body>
 
-    <div class="background">
+    <!-- <div class="background">
         <div class="stars1"></div>
         <div class="stars2"></div>
         <div class="stars3"></div>
-    </div>
+    </div> -->
 
     <div id="slideCards" class="swiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide swiper-slide-active">
-                <div class="card">
-                    <img src="https://avatars.githubusercontent.com/u/88355379?v=4" alt="foto de perfil">
-                    <div class="networks">
-                        <a href="https://www.linkedin.com/in/samuel-cupertino-618ba3218/" target="_blank">
+                <div class="card card-networks">
+                    <img class="profile" src="https://avatars.githubusercontent.com/u/88355379?v=4" alt="foto de perfil">
+                    <!-- <div class="networks"> -->
+                        <a class="btn-network" href="https://www.linkedin.com/in/samuel-cupertino-618ba3218/" target="_blank">
                             <i class="fab fa-linkedin-in"></i>
                             <span>Linkedin</span>
                         </a>
-                        <a href="http://instagram.com/_u/samuelcupertino.dev" target="_blank">
+                        <a class="btn-network" href="http://instagram.com/_u/samuelcupertino.dev" target="_blank">
                             <i class="fab fa-instagram"></i>
                             <span>Instagram</span>
                         </a>
-                        <a href="https://github.com/samuelCupertino" target="_blank">
+                        <a class="btn-network" href="https://github.com/samuelCupertino" target="_blank">
                             <i class="fab fa-github"></i>
                             <span>GitHub</span>
                         </a>
-                        <a href="https://codepen.io/samuelCupertino" target="_blank">
+                        <a class="btn-network" href="https://codepen.io/samuelCupertino" target="_blank">
                             <i class="fab fa-codepen"></i>
                             <span>CodePen</span>
                         </a>
-                        <a href="mailto:contato.samuelcupertino@gmail.com" target="_blank">
+                        <a class="btn-network" href="mailto:contato.samuelcupertino@gmail.com" target="_blank">
                             <i class="far fa-envelope"></i>
                             <span>E-mail</span>
                         </a>
+                    <!-- </div> -->
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="card card-github">
+                    <img class="profile" src="https://avatars.githubusercontent.com/u/88355379?v=4" alt="foto de perfil">
+                    <div class="info">
+                        <span class="user-name">Samuel Cupertino</span>
+                        <div class="followers">
+                            <span>10</span>
+                            <span>seguidores</span>
+                        </div>
+                        <div class="following">
+                            <span>6</span>
+                            <span>seguindo</span>
+                        </div>
+                        <div class="avatars">
+                            <img src="https://avatars.githubusercontent.com/u/88355379?v=4" alt="">
+                            <img src="https://avatars.githubusercontent.com/u/88355379?v=4" alt="">
+                            <img src="https://avatars.githubusercontent.com/u/88355379?v=4" alt="">
+                            <img src="https://avatars.githubusercontent.com/u/88355379?v=4" alt="">
+                            <img src="https://avatars.githubusercontent.com/u/88355379?v=4" alt="">
+                            <img src="https://avatars.githubusercontent.com/u/88355379?v=4" alt="">
+                            <img src="https://avatars.githubusercontent.com/u/88355379?v=4" alt="">
+                        </div>
                     </div>
+                    <div class="separator">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="repos">
+
+                    </div>
+                    <a class="btn-network" href="https://github.com/samuelCupertino" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
                 </div>
             </div>
 
             <div class="swiper-slide">
                 <div class="card">
-                    <img src="https://avatars.githubusercontent.com/u/88355379?v=4" alt="foto de perfil">
-                    <div class="networks">
-                        <a href="https://www.linkedin.com/in/samuel-cupertino-618ba3218/" target="_blank">
-                            <i class="fab fa-linkedin-in"></i>
-                            <span>Instagram</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="card">
-                    <img src="https://avatars.githubusercontent.com/u/88355379?v=4" alt="foto de perfil">
-                    <div class="networks">
-                        <a href="https://www.linkedin.com/in/samuel-cupertino-618ba3218/" target="_blank">
-                            <i class="fab fa-linkedin-in"></i>
-                            <span>GitHub</span>
-                        </a>
-                    </div>
+                    <!-- <img class="profile" src="https://avatars.githubusercontent.com/u/88355379?v=4" alt="foto de perfil"> -->
+                    
+                    <a class="btn-network" href="https://www.linkedin.com/in/samuel-cupertino-618ba3218/" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                        <span>CodePen</span>
+                    </a>                    
                 </div>
             </div>
 
@@ -83,15 +105,18 @@
     <script>
         setTimeout(() => {
             const swiper = new Swiper('#slideCards', {
-                // loop: true,
                 effect: 'cards',
                 grabCursor: true,
                 pagination: {
                     el: '.swiper-pagination',
-                    // dynamicBullets: true,
                 },
             })
         }, 3000)
+
+        const cardGitHub = () => {
+
+        }
+        cardGitHub()
     </script>
   </body>
 </html>
