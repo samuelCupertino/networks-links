@@ -81,7 +81,6 @@ body {
     text-decoration: none;
     display: flex;
     padding: 12px;
-    margin-top: 28px;
     transition: 0.75s;
 }
 .card a.btn-network:hover {
@@ -146,6 +145,9 @@ body {
     90% { background: conic-gradient(var(--color-secondary) 90%, var(--color-primary) 0) }
     95% { background: conic-gradient(var(--color-secondary) 95%, var(--color-primary) 0) }
     100% { background: conic-gradient(var(--color-secondary) 100%, var(--color-primary) 0) }
+}
+.card-networks a.btn-network {
+    margin-top: 28px;
 }
 
 /* CARD GITHUB */
@@ -225,7 +227,27 @@ body {
 }
 
 .card-github .repos {
-    grid-area: repos;    
+    grid-area: repos;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    overflow-y: scroll;
+}
+.card-github .repos .repository {
+    background-color: var(--color-primary);
+    opacity: 0.5;
+    font-size: 10pt;
+    padding: 10px;
+    border-radius: 5px;
+}
+.card-github .repos .repository .title {
+    margin: 0;
+}
+.card-github .repos .repository .description {
+    margin: 5px 0;
+}
+.card-github .repos .repository .updated_at {
+    text-align: right;
 }
 .card-github .btn-network {
     grid-area: btn;    

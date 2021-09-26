@@ -67,7 +67,48 @@
                         <i class="fab fa-github"></i>
                     </div>
                     <div class="repos">
-
+                        <article class="repository">
+                            <h3 class="title">card-curve-outside</h3>
+                            <p class="description">
+                                Carde com efeito de curved outside e responsividade fluida.
+                            </p>                       
+                            <div class="updated_at">25/08/2021</div>
+                            <div>
+                                <i class="far fa-star"></i>
+                                <span>7</span>
+                            </div>
+                        </article>
+                        <article class="repository">
+                            <h3 class="title">card-curve-outside</h3>                         
+                            <div>7</div>
+                            <span class="publish_at">23:21 25/08/2021</span>                         
+                            <span class="updated_at">23:21 25/08/2021</span>                         
+                            <p class="description">
+                                null null null
+                                null null null
+                            </p>   
+                        </article>
+                        <article class="repository">                        
+                            <h3 class="title">card-curve-outside</h3>                         
+                            <div>7</div>                         
+                            <span class="publish_at">23:21 25/08/2021</span>                         
+                            <span class="updated_at">23:21 25/08/2021</span>                         
+                            <p class="description">
+                                null null null
+                                null null null
+                            </p>   
+                        </article>
+                        <article class="repository">                        
+                            <h3 class="title">card-curve-outside</h3>                         
+                            <div>7</div>                         
+                            <span class="publish_at">23:21 25/08/2021</span>                         
+                            <span class="updated_at">23:21 25/08/2021</span>                         
+                            <p class="description">
+                                null null null
+                                null null null
+                            </p>   
+                        </article>
+                        <!-- dynamic -->
                     </div>
                     <a class="btn-network" href="https://github.com/samuelCupertino" target="_blank">
                         <i class="fab fa-github"></i>
@@ -106,25 +147,46 @@
         }, 3000)
 
         const cardGitHub = async user => {
-            const followersNumEl = document.querySelector('.card-github .followers .num')
-            const followingNumEl = document.querySelector('.card-github .following .num')
-            const avatarsEl = document.querySelector('.card-github .avatars')
-            
             const userData = await fetch(`https://api.github.com/users/${user}`)
-            const {avatar_url, followers, following, public_repos} = await userData.json()
+            if(userData.ok) {
+                const {avatar_url, followers, following, public_repos} = await userData.json()
+                const followersData = await fetch(`https://api.github.com/users/${user}/followers`)
 
-            followersNumEl.textContent = followers
-            followingNumEl.textContent = following
+                const followersNumEl = document.querySelector('.card-github .followers .num')
+                const followingNumEl = document.querySelector('.card-github .following .num')
 
-            const followersData = await fetch(`https://api.github.com/users/${user}/followers`)
-            const arrFollowers = await followersData.json()
+                followersNumEl.textContent = followers
+                followingNumEl.textContent = following
+            }
             
-            arrFollowers.forEach(({avatar_url, login}) =>
-                avatarsEl.insertAdjacentHTML('beforeend', `
-                    <img src="${avatar_url}" alt="${login}">                
-                `))
+            const followersData = await fetch(`https://api.github.com/users/${user}/followers`)
+            if(followersData.ok) {
+                const arrFollowers = await followersData.json()
+                const arrFollowersRand = arrFollowers.sort(() => Math.random() > 0.5)
+                const avatarsEl = document.querySelector('.card-github .avatars')
 
-            console.log(arrFollowers)
+                arrFollowersRand.forEach(({avatar_url, login}) =>
+                    avatarsEl.insertAdjacentHTML('beforeend', `<img src="${avatar_url}" alt="${login}">`))
+            }
+
+            const reposData = await fetch(`https://api.github.com/users/${user}/repos`)
+            if(reposData.ok) {
+                const arrRepos = await reposData.json()
+
+                const reposEl = document.querySelector('.card-github .repos')
+               
+                // arrRepos.forEach(({stargazers_count, pushed_at, updated_at, name, description}) =>
+                //     reposEl.insertAdjacentHTML('beforeend', `
+                //         <article class="repository">                        
+                //             <div>${name}</div>                         
+                //             <div>${stargazers_count}</div>                         
+                //             <div>${pushed_at}</div>                         
+                //             <div>${updated_at}</div>                         
+                //             <div>${description}</div>   
+                //         </article> 
+                //     `)) 
+                console.log(R = arrRepos)
+            }
         }
         cardGitHub('samuelCupertino')
     </script>
