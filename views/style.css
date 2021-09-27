@@ -149,6 +149,13 @@ body {
 .card-networks a.btn-network {
     margin-top: 28px;
 }
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-thumb {
+    border-right: 5px solid var(--color-primary);
+    border-radius: 5px;
+}
 
 /* CARD GITHUB */
 .card-github {
@@ -232,7 +239,7 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 5px;
     overflow-y: scroll;
-}
+}  
 .card-github .feed .repository {
     background-color: var(--color-primary);
     opacity: 0.4;
