@@ -296,8 +296,9 @@
             const followingNumEl = document.querySelector('.card-instagram .following .num')
             followersNumEl.textContent = followers
             followingNumEl.textContent = following
+
+            console.log(document.querySelector('.FollowerCountText').innerText)
         }
-        cardInstagram()
 
         const cardGitHub = async user => {
             const userData = await fetch(`https://api.github.com/users/${user}`)

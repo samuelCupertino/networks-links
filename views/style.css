@@ -362,7 +362,11 @@ body {
     gap: 5px; */
     overflow-y: scroll;
 }
-.card-instagram .feed .post {
+
+.card-instagram .feed iframe {
+    opacity: 0.8;
+}
+/* .card-instagram .feed .post {
     background-color: var(--color-primary);
     opacity: 0.4;
     font-size: 10pt;
@@ -382,7 +386,7 @@ body {
 }
 .card-instagram .feed .post .publish {
     text-align: right;
-}
+} */
 .card-instagram .btn-network {
     grid-area: btn;    
 }
