@@ -67,7 +67,7 @@
                         <i class="fab fa-github"></i>
                     </div>
                     <div class="feed">
-                        <article class="repository">
+                        <!-- <article class="repository">
                             <h3 class="title">card-curve-outside</h3>
                             <p class="description">
                                 Carde com efeito de curved outside e responsividade fluida.
@@ -77,40 +77,8 @@
                                 <i class="far fa-star"></i>
                                 <span>7</span>
                             </div>
-                        </article>
-                        <article class="repository">
-                            <h3 class="title">card-curve-outside</h3>
-                            <p class="description">
-                                Carde com efeito de curved outside e responsividade fluida.
-                            </p>                       
-                            <div class="updated_at">25/08/2021</div>
-                            <div>
-                                <i class="far fa-star"></i>
-                                <span>7</span>
-                            </div>
-                        </article>
-                        <article class="repository">
-                            <h3 class="title">card-curve-outside</h3>
-                            <p class="description">
-                                Carde com efeito de curved outside e responsividade fluida.
-                            </p>                       
-                            <div class="updated_at">25/08/2021</div>
-                            <div>
-                                <i class="far fa-star"></i>
-                                <span>7</span>
-                            </div>
-                        </article>
-                        <article class="repository">
-                            <h3 class="title">card-curve-outside</h3>
-                            <p class="description">
-                                Carde com efeito de curved outside e responsividade fluida.
-                            </p>                       
-                            <div class="updated_at">25/08/2021</div>
-                            <div>
-                                <i class="far fa-star"></i>
-                                <span>7</span>
-                            </div>
-                        </article>
+                        </article> -->
+
                         <!-- dynamic -->
                     </div>
                     <a class="btn-network" href="https://github.com/samuelCupertino" target="_blank">
@@ -189,6 +157,7 @@
                     </a>
                 </div>
             </div>
+
         </div>
 
         <div class="swiper-pagination"></div>
@@ -213,42 +182,47 @@
 
         const cardGitHub = async user => {
             const userData = await fetch(`https://api.github.com/users/${user}`)
-            if(userData.ok) {
-                const {followers, following} = await userData.json()
+            const followersData = await fetch(`https://api.github.com/users/${user}/followers`)
+            const reposData = await fetch(`https://api.github.com/users/${user}/repos`)
+            
+            // update cache
+            if(userData.ok && followersData.ok && reposData.ok) {
+                const cardGitHub = { followers, following } = await userData.json()
+
+                const arrFollowersData = await followersData.json()
+                cardGitHub.arrFollowers = arrFollowersData
+                    .sort(() => Math.random() > 0.5)
+                    .slice(0, 10)
+
+                const arrReposData = await reposData.json()
+                cardGitHub.arrRepos = arrReposData
+                    .filter(e => e.description)
+                    .sort((a, b) => a.updated_at > b.updated_at? -1:1)
+                    .slice(0, 10)
+
+                localStorage.cardGitHub = JSON.stringify(cardGitHub) 
+            }
+
+            if(localStorage.cardGitHub) {
+                const {followers, following, arrFollowers, arrRepos} = JSON.parse(localStorage.cardGitHub)
 
                 const followersNumEl = document.querySelector('.card-github .followers .num')
                 const followingNumEl = document.querySelector('.card-github .following .num')
-
                 followersNumEl.textContent = followers
                 followingNumEl.textContent = following
-            }
-            
-            const followersData = await fetch(`https://api.github.com/users/${user}/followers`)
-            if(followersData.ok) {
-                const arrFollowers = await followersData.json()
-                const arrFollowersRand = arrFollowers.sort(() => Math.random() > 0.5)
 
                 const avatarsEl = document.querySelector('.card-github .avatars')
-
-                arrFollowersRand.forEach(({avatar_url, login}) =>
+                arrFollowers.forEach(({avatar_url, login}) =>
                     avatarsEl.insertAdjacentHTML('beforeend', `<img src="${avatar_url}" alt="${login}">`))
-            }
-
-            const reposData = await fetch(`https://api.github.com/users/${user}/repos`)
-            if(reposData.ok) {
-                const arrReposData = await reposData.json()
-                const arrRepos = arrReposData.filter(e => e.description).sort(({updated_at:up1},{updated_at:up2})=> up1>up2? -1:1)
-                console.log(A = arrRepos)
+                    
                 const reposEl = document.querySelector('.card-github .feed')
-                reposEl.innerHTML = ''
-
                 arrRepos.forEach(({stargazers_count, updated_at, name, description, html_url}) => {
-                    const date = updated_at.replace(/(\d{4})-(\d{2})-(\d{2}).*/, '$3/$2/$1')
+                    const dateBR = updated_at.replace(/(\d{4})-(\d{2})-(\d{2}).*/, '$3/$2/$1')
                     reposEl.insertAdjacentHTML('beforeend', `
                         <a class="repository" href="${html_url}" target="_blank">
                             <h3 class="title">${name}</h3>
                             <p class="description">${description}</p>                       
-                            <div class="updated_at">${date}</div>
+                            <div class="updated_at">${dateBR}</div>
                             <div>
                                 <i class="far fa-star"></i>
                                 <span>${stargazers_count}</span>
@@ -256,7 +230,7 @@
                         </a>
                     `)
                 })
-                console.log(R = arrRepos)
+                console.log({followers, following, arrFollowers, arrRepos})
             }
         }
         cardGitHub('samuelCupertino')
