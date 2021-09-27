@@ -365,7 +365,7 @@ body {
 }
 .card-instagram .feed .post .description {
     margin: 5px 0;
-    min-height: 60px;
+    min-height: 88px;
     word-break: break-all;
     display: -webkit-box;
     -webkit-line-clamp: 4;
