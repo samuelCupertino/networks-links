@@ -173,12 +173,12 @@ body {
         'followers following'
         'avatars avatars';
     align-items: center;
-    font-size: 10pt; 
+    font-size: 12pt; 
     color: var(--color-primary);
 }
 .card-github .info .user-name {
     grid-area: user-name;
-    font-size: 12pt;
+    font-size: 14pt;
     font-weight: bold;
 }
 .card-github .info .followers {
@@ -294,12 +294,12 @@ body {
         'followers following'
         'avatars avatars';
     align-items: center;
-    font-size: 10pt; 
+    font-size: 12pt; 
     color: var(--color-primary);
 }
 .card-instagram .info .user-name {
     grid-area: user-name;
-    font-size: 12pt;
+    font-size: 14pt;
     font-weight: bold;
 }
 .card-instagram .info .followers {
@@ -380,6 +380,13 @@ body {
     grid-area: btn;    
 }
 
+
+@media (max-width: 430px) { 
+    :is(.card-github, .card-instagram) .info,
+    :is(.card-github, .card-instagram) .info .user-name {
+        font-size: calc(7vw - 10pt);
+    }
+}
 
 
 /* BACKGROUND */
