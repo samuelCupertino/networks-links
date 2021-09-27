@@ -12,11 +12,11 @@
 
   <body>
 
-    <div class="background">
+    <!-- <div class="background">
         <div class="stars1"></div>
         <div class="stars2"></div>
         <div class="stars3"></div>
-    </div>
+    </div> -->
 
     <div id="slideCards" class="swiper">
         <div class="swiper-wrapper">
@@ -108,47 +108,19 @@
                     <div class="separator">
                         <i class="fab fa-instagram"></i>
                     </div>
-                    <div class="feed">
-                        <article class="post">
+                    <div class="feed">                        
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CSxgt_BsNhQ/?utm_source=ig_embed&amp;utm_campaign=loading" style="width: calc(100% - 5px);"></blockquote> 
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CTK6aZgpkO7/?utm_source=ig_embed&amp;utm_campaign=loadin" style="width: calc(100% - 5px);"></blockquote> 
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CSqPeBTMUG4/?utm_source=ig_embed&amp;utm_campaign=loading" style="width: calc(100% - 5px);"></blockquote>
+                        
+                        <!-- <article class="post">
                             <p class="description"></p>                    
                             <div class="pusblish"></div>
                             <div>
                                 <i class="far fa-heart"></i>
                                 <span>8</span>
                             </div>
-                        </article>
-                        <article class="post">
-                            <p class="description"></p>                    
-                            <div class="pusblish"></div>
-                            <div>
-                                <i class="far fa-heart"></i>
-                                <span>8</span>
-                            </div>
-                        </article>
-                        <article class="post">
-                            <p class="description"></p>                    
-                            <div class="pusblish"></div>
-                            <div>
-                                <i class="far fa-heart"></i>
-                                <span>8</span>
-                            </div>
-                        </article>
-                        <article class="post">
-                            <p class="description"></p>                    
-                            <div class="pusblish"></div>
-                            <div>
-                                <i class="far fa-heart"></i>
-                                <span>8</span>
-                            </div>
-                        </article>
-                        <article class="post">
-                            <p class="description"></p>                    
-                            <div class="pusblish"></div>
-                            <div>
-                                <i class="far fa-heart"></i>
-                                <span>8</span>
-                            </div>
-                        </article>
+                        </article> -->
                         <!-- dynamic -->
                     </div>
                     <a class="btn-network" href="http://instagram.com/_u/samuelcupertino.dev" target="_blank">
@@ -302,7 +274,7 @@
 
         <div class="swiper-pagination"></div>
     </div>
-    
+    <script async src="//www.instagram.com/embed.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
         setTimeout(() => {
@@ -317,7 +289,13 @@
         }, 3000)
 
         const cardInstagram = async () => {
+            const followers = 253
+            const following = 212
 
+            const followersNumEl = document.querySelector('.card-instagram .followers .num')
+            const followingNumEl = document.querySelector('.card-instagram .following .num')
+            followersNumEl.textContent = followers
+            followingNumEl.textContent = following
         }
         cardInstagram()
 
@@ -356,10 +334,10 @@
                 arrFollowers.forEach(({avatar_url, login}) =>
                     avatarsEl.insertAdjacentHTML('beforeend', `<img src="${avatar_url}" alt="${login}">`))
                     
-                const reposEl = document.querySelector('.card-github .feed')
+                const feedEl = document.querySelector('.card-github .feed')
                 arrRepos.forEach(({stargazers_count, updated_at, name, description, html_url}) => {
                     const dateBR = updated_at.replace(/(\d{4})-(\d{2})-(\d{2}).*/, '$3/$2/$1')
-                    reposEl.insertAdjacentHTML('beforeend', `
+                    feedEl.insertAdjacentHTML('beforeend', `
                         <a class="repository" href="${html_url}" target="_blank">
                             <h3 class="title">${name}</h3>
                             <p class="description">${description}</p>                       

@@ -357,9 +357,9 @@ body {
 
 .card-instagram .feed {
     grid-area: feed;
-    display: grid;
+    /* display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 5px;
+    gap: 5px; */
     overflow-y: scroll;
 }
 .card-instagram .feed .post {
