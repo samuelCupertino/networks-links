@@ -59,36 +59,14 @@
                             <span class="num">6</span>
                             <span>seguindo</span>
                         </div>
-                        <div class="avatars">
+                        <a class="avatars" href="https://github.com/samuelCupertino?tab=followers" target="_blank">
                             <!-- dynamic -->
-                        </div>
+                        </a>
                     </div>
                     <div class="separator">
                         <i class="fab fa-github"></i>
                     </div>
-                    <div class="repos">
-                        <article class="repository">
-                            <h3 class="title">card-curve-outside</h3>
-                            <p class="description">
-                                Carde com efeito de curved outside e responsividade fluida.
-                            </p>                       
-                            <div class="updated_at">25/08/2021</div>
-                            <div>
-                                <i class="far fa-star"></i>
-                                <span>7</span>
-                            </div>
-                        </article>
-                        <article class="repository">
-                            <h3 class="title">card-curve-outside</h3>
-                            <p class="description">
-                                Carde com efeito de curved outside e responsividade fluida.
-                            </p>                       
-                            <div class="updated_at">25/08/2021</div>
-                            <div>
-                                <i class="far fa-star"></i>
-                                <span>7</span>
-                            </div>
-                        </article>
+                    <div class="feed">
                         <article class="repository">
                             <h3 class="title">card-curve-outside</h3>
                             <p class="description">
@@ -143,17 +121,74 @@
             </div>
 
             <div class="swiper-slide">
-                <div class="card">
-                    <!-- <img class="profile" src="https://avatars.githubusercontent.com/u/88355379?v=4" alt="foto de perfil"> -->
-                    
-                    <a class="btn-network" href="https://www.linkedin.com/in/samuel-cupertino-618ba3218/" target="_blank">
-                        <i class="fab fa-linkedin-in"></i>
-                        <span>CodePen</span>
-                    </a>                    
+                <div class="card card-instagram">
+                    <img class="profile" src="https://avatars.githubusercontent.com/u/88355379?v=4" alt="foto de perfil">
+                    <div class="info">
+                        <span class="user-name">Samuel Cupertino</span>
+                        <div class="followers">
+                            <span class="num">251</span>
+                            <span>seguidores</span>
+                        </div>
+                        <div class="following">
+                            <span class="num">210</span>
+                            <span>seguindo</span>
+                        </div>
+                        <div class="avatars">
+                            <!-- dynamic -->
+                        </div>
+                    </div>
+                    <div class="separator">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="feed">
+                        <article class="post">
+                            <p class="description">
+                                
+                            </p>                       
+                            <div class="pusblish"></div>
+                            <div>
+                                <i class="far fa-heart"></i>
+                                <span>8</span>
+                            </div>
+                        </article>
+                        <article class="post">
+                            <p class="description">
+                                
+                            </p>                       
+                            <div class="pusblish"></div>
+                            <div>
+                                <i class="far fa-heart"></i>
+                                <span>8</span>
+                            </div>
+                        </article>
+                        <article class="post">
+                            <p class="description">
+                                
+                            </p>                       
+                            <div class="pusblish"></div>
+                            <div>
+                                <i class="far fa-heart"></i>
+                                <span>8</span>
+                            </div>
+                        </article>
+                        <article class="post">
+                            <p class="description">
+                                
+                            </p>                       
+                            <div class="pusblish"></div>
+                            <div>
+                                <i class="far fa-heart"></i>
+                                <span>8</span>
+                            </div>
+                        </article>
+                        <!-- dynamic -->
+                    </div>
+                    <a class="btn-network" href="http://instagram.com/_u/samuelcupertino.dev" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
                 </div>
             </div>
-
-
         </div>
 
         <div class="swiper-pagination"></div>
@@ -171,11 +206,15 @@
             })
         }, 3000)
 
+        const cardInstagram = async () => {
+
+        }
+        cardInstagram()
+
         const cardGitHub = async user => {
             const userData = await fetch(`https://api.github.com/users/${user}`)
             if(userData.ok) {
-                const {avatar_url, followers, following, public_repos} = await userData.json()
-                const followersData = await fetch(`https://api.github.com/users/${user}/followers`)
+                const {followers, following} = await userData.json()
 
                 const followersNumEl = document.querySelector('.card-github .followers .num')
                 const followingNumEl = document.querySelector('.card-github .following .num')
@@ -188,6 +227,7 @@
             if(followersData.ok) {
                 const arrFollowers = await followersData.json()
                 const arrFollowersRand = arrFollowers.sort(() => Math.random() > 0.5)
+
                 const avatarsEl = document.querySelector('.card-github .avatars')
 
                 arrFollowersRand.forEach(({avatar_url, login}) =>
@@ -196,24 +236,33 @@
 
             const reposData = await fetch(`https://api.github.com/users/${user}/repos`)
             if(reposData.ok) {
-                const arrRepos = await reposData.json()
+                const arrReposData = await reposData.json()
+                const arrRepos = arrReposData.filter(e => e.description).sort(({updated_at:up1},{updated_at:up2})=> up1>up2? -1:1)
+                console.log(A = arrRepos)
+                const reposEl = document.querySelector('.card-github .feed')
+                reposEl.innerHTML = ''
 
-                const reposEl = document.querySelector('.card-github .repos')
-               
-                // arrRepos.forEach(({stargazers_count, pushed_at, updated_at, name, description}) =>
-                //     reposEl.insertAdjacentHTML('beforeend', `
-                //         <article class="repository">                        
-                //             <div>${name}</div>                         
-                //             <div>${stargazers_count}</div>                         
-                //             <div>${pushed_at}</div>                         
-                //             <div>${updated_at}</div>                         
-                //             <div>${description}</div>   
-                //         </article> 
-                //     `)) 
+                arrRepos.forEach(({stargazers_count, updated_at, name, description, html_url}) => {
+                    const date = updated_at.replace(/(\d{4})-(\d{2})-(\d{2}).*/, '$3/$2/$1')
+                    reposEl.insertAdjacentHTML('beforeend', `
+                        <a class="repository" href="${html_url}" target="_blank">
+                            <h3 class="title">${name}</h3>
+                            <p class="description">${description}</p>                       
+                            <div class="updated_at">${date}</div>
+                            <div>
+                                <i class="far fa-star"></i>
+                                <span>${stargazers_count}</span>
+                            </div>
+                        </a>
+                    `)
+                })
                 console.log(R = arrRepos)
             }
         }
         cardGitHub('samuelCupertino')
+
+
+
     </script>
   </body>
 </html>

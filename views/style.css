@@ -156,7 +156,7 @@ body {
     grid-template-areas:
         'img info'
         'separator separator'
-        'repos repos'
+        'feed feed'
         'btn btn';
     grid-template-rows: auto auto 1fr auto;
     gap: 1rem;
@@ -226,30 +226,156 @@ body {
     border-radius: 50%;
 }
 
-.card-github .repos {
-    grid-area: repos;
+.card-github .feed {
+    grid-area: feed;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5px;
     overflow-y: scroll;
 }
-.card-github .repos .repository {
+.card-github .feed .repository {
     background-color: var(--color-primary);
     opacity: 0.4;
     font-size: 10pt;
     padding: 10px;
     border-radius: 5px;
+    height: fit-content;
+    text-decoration: none;
+    color: black;
 }
-.card-github .repos .repository .title {
+.card-github .feed .repository .title {
     margin: 0;
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.card-github .repos .repository .description {
+.card-github .feed .repository .description {
     margin: 5px 0;
+    min-height: 60px;
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.card-github .repos .repository .updated_at {
+.card-github .feed .repository .updated_at {
     text-align: right;
 }
 .card-github .btn-network {
+    grid-area: btn;    
+}
+
+
+/* CARD INSTAGRAM */
+.card-instagram {
+    display: grid;
+    grid-template-areas:
+        'img info'
+        'separator separator'
+        'feed feed'
+        'btn btn';
+    grid-template-rows: auto auto 1fr auto;
+    gap: 1rem;
+}
+.card-instagram img {
+    width: 100%;
+    grid-area: img;
+}
+.card-instagram .info {
+    grid-area: info;   
+    display: grid;
+    grid-template-areas:
+        'user-name user-name'
+        'followers following'
+        'avatars avatars';
+    align-items: center;
+    font-size: 10pt; 
+    color: var(--color-primary);
+}
+.card-instagram .info .user-name {
+    grid-area: user-name;
+    font-size: 12pt;
+    font-weight: bold;
+}
+.card-instagram .info .followers {
+    grid-area: followers;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card-instagram .info .following {
+    grid-area: following;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card-instagram .info .avatars {
+    grid-area: avatars;
+    height: 2.25rem;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+.card-instagram .info .avatars img {
+    height: 100%;
+    width: 2.25rem;
+    background-color: black;
+    border-radius: 50%;
+    margin-right: -10px;
+}
+.card-instagram .separator {
+    grid-area: separator;
+    width: 100%;
+    position: relative;
+    height: 1px;
+    background-color: var(--color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+.card-instagram .separator i {
+    background-color: black;
+    color: var(--color-primary);
+    font-size: 15pt;
+    border-radius: 5px;
+    line-height: 16px;
+}
+
+.card-instagram .feed {
+    grid-area: feed;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    overflow-y: scroll;
+}
+.card-instagram .feed .post {
+    background-color: var(--color-primary);
+    opacity: 0.4;
+    font-size: 10pt;
+    padding: 10px;
+    border-radius: 5px;
+    height: fit-content;
+}
+.card-instagram .feed .post .description {
+    margin: 5px 0;
+    min-height: 60px;
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.card-instagram .feed .post .publish {
+    text-align: right;
+}
+.card-instagram .btn-network {
     grid-area: btn;    
 }
 
