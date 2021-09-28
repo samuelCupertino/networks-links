@@ -160,7 +160,6 @@
                     </div>
                     <div class="feed">
                         <p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="vYZYdGZ" data-user="samuelCupertino" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"></p>
-                        <p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="dyWBwGp" data-user="samuelCupertino" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"></p>
                         <p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="jOmRQyp" data-user="samuelCupertino" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"></p>
                         <p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="JjJYzNK" data-user="samuelCupertino" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"></p>
                     </div>
@@ -202,6 +201,7 @@
 
             console.log(document.querySelector('.FollowerCountText').innerText)
         }
+        cardInstagram()
 
         const cardGitHub = async user => {
             const userData = await fetch(`https://api.github.com/users/${user}`)
