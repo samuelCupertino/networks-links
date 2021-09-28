@@ -371,8 +371,8 @@ body {
 
 
 @media (max-width: 430px) { 
-    :is(.card-github, .card-instagram) .info,
-    :is(.card-github, .card-instagram) .info .user-name {
+    .card-network .info,
+    .card-network .info .user-name {
         font-size: calc(7vw - 10pt);
     }
 }
