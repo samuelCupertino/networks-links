@@ -117,8 +117,8 @@ body {
 }
 
 
-/* CARD NETWORKS */
-.card-networks img.profile {
+/* CARD ALL NETWORKS */
+.card-all-networks img.profile {
     margin: 0 auto;
     background: conic-gradient(var(--color-secondary) 0%, var(--color-primary) 0);
     animation: imgLoading 1.5s 1.5s forwards;
@@ -146,42 +146,75 @@ body {
     95% { background: conic-gradient(var(--color-secondary) 95%, var(--color-primary) 0) }
     100% { background: conic-gradient(var(--color-secondary) 100%, var(--color-primary) 0) }
 }
-.card-networks a.btn-network {
+.card-all-networks a.btn-network {
     margin-top: 27px;
 }
-::-webkit-scrollbar {
-    width: 10px;
-}
-::-webkit-scrollbar-thumb {
-    border-right: 5px solid var(--color-primary);
-    border-radius: 5px;
-}
 
-/* CARD GITHUB */
-.card-github {
+/* CARD NETWORK */
+.card-network {
     display: grid;
     grid-template-areas:
         'img info'
         'separator separator'
         'feed feed'
         'btn btn';
+    grid-template-columns: auto 1fr;
     grid-template-rows: auto auto 1fr auto;
     gap: 1rem;
 }
-.card-github img {
+.card-network img {
     width: 100%;
     grid-area: img;
 }
-.card-github .info {
+.card-network .info {
     grid-area: info;   
     display: grid;
+    align-items: center;
+    font-size: 12pt; 
+    color: var(--color-primary);
+}
+.card-network .separator {
+    grid-area: separator;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-network .separator span {
+    width: 50%;
+    height: 1px;
+    background-color: var(--color-primary);
+}
+.card-network .separator i {
+    color: var(--color-primary);
+    font-size: 15pt;
+    line-height: 16px;
+}
+.card-network .feed {
+    grid-area: feed;
+    overflow-y: scroll;
+}
+.card-network .feed::-webkit-scrollbar {
+    width: 10px;
+}
+.card-network .feed::-webkit-scrollbar-thumb {
+    border-right: 5px solid var(--color-primary);
+    border-radius: 5px;
+}
+.card-network .feed iframe {
+    opacity: 0.8;
+}
+.card-network .btn-network {
+    grid-area: btn;    
+}
+
+/* CARD GITHUB */
+.card-github .info {
     grid-template-areas:
         'user-name user-name'
         'followers following'
         'avatars avatars';
-    align-items: center;
-    font-size: 12pt; 
-    color: var(--color-primary);
 }
 .card-github .info .user-name {
     grid-area: user-name;
@@ -215,30 +248,10 @@ body {
     border-radius: 50%;
     margin-right: -10px;
 }
-.card-github .separator {
-    grid-area: separator;
-    width: 100%;
-    position: relative;
-    height: 1px;
-    background-color: var(--color-primary);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px 0;
-}
-.card-github .separator i {
-    background-color: black;
-    color: var(--color-primary);
-    font-size: 15pt;
-    border-radius: 50%;
-}
-
 .card-github .feed {
-    grid-area: feed;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5px;
-    overflow-y: scroll;
 }  
 .card-github .feed .repository {
     background-color: var(--color-primary);
@@ -273,36 +286,13 @@ body {
 .card-github .feed .repository .updated_at {
     text-align: right;
 }
-.card-github .btn-network {
-    grid-area: btn;    
-}
 
 
 /* CARD INSTAGRAM */
-.card-instagram {
-    display: grid;
-    grid-template-areas:
-        'img info'
-        'separator separator'
-        'feed feed'
-        'btn btn';
-    grid-template-rows: auto auto 1fr auto;
-    gap: 1rem;
-}
-.card-instagram img {
-    width: 100%;
-    grid-area: img;
-}
 .card-instagram .info {
-    grid-area: info;   
-    display: grid;
     grid-template-areas:
         'user-name user-name'
-        'followers following'
-        'avatars avatars';
-    align-items: center;
-    font-size: 12pt; 
-    color: var(--color-primary);
+        'followers following';
 }
 .card-instagram .info .user-name {
     grid-area: user-name;
@@ -321,74 +311,62 @@ body {
     flex-direction: column;
     align-items: center;
 }
-.card-instagram .info .avatars {
-    grid-area: avatars;
-    height: 2.25rem;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    overflow: hidden;
+
+
+
+/* CARD LINKEDIN */
+.card-linkedin .info {
+    grid-template-areas:
+        'user-name'
+        'connections';
 }
-.card-instagram .info .avatars img {
-    height: 100%;
-    width: 2.25rem;
-    background-color: black;
-    border-radius: 50%;
-    margin-right: -10px;
+.card-linkedin .info .user-name {
+    grid-area: user-name;
+    font-size: 14pt;
+    font-weight: bold;
+    text-align: center;
 }
-.card-instagram .separator {
-    grid-area: separator;
-    width: 100%;
-    position: relative;
-    height: 1px;
-    background-color: var(--color-primary);
+.card-linkedin .info .connections {
+    grid-area: connections;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    margin: 10px 0;
-}
-.card-instagram .separator i {
-    background-color: black;
-    color: var(--color-primary);
-    font-size: 15pt;
-    border-radius: 5px;
-    line-height: 16px;
 }
 
-.card-instagram .feed {
+.card-linkedin .feed iframe {
+    width: 100%;
+    max-height: 30rem;
+}
+
+/* CARD CODEPEN */
+.card-codepen .info {
+    grid-template-areas:
+        'user-name user-name'
+        'followers following';
+}
+.card-codepen .info .user-name {
+    grid-area: user-name;
+    font-size: 14pt;
+    font-weight: bold;
+}
+.card-codepen .info .followers {
+    grid-area: followers;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card-codepen .info .following {
+    grid-area: following;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card-codepen .feed {
     grid-area: feed;
-    /* display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5px; */
     overflow-y: scroll;
-}
-
-.card-instagram .feed iframe {
-    opacity: 0.8;
-}
-/* .card-instagram .feed .post {
-    background-color: var(--color-primary);
-    opacity: 0.4;
-    font-size: 10pt;
-    padding: 10px;
-    border-radius: 5px;
-    height: fit-content;
-}
-.card-instagram .feed .post .description {
-    margin: 5px 0;
-    min-height: 88px;
-    word-break: break-all;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.card-instagram .feed .post .publish {
-    text-align: right;
-} */
-.card-instagram .btn-network {
-    grid-area: btn;    
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 
