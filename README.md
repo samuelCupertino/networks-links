@@ -5,3 +5,6 @@ Cardes para divulgação das minhas redes de contato, desenvolvido utilizando Am
 samuelcupertino.dev/networks
 
 OBS: ainda preciso realizar algumas otimizações para funcionar em aparelho com configurações de entrada.
+
+
+<img src="views/image/run.gif">
