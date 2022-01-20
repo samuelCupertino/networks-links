@@ -7,4 +7,4 @@ https://samuelcupertino.dev/networks
 OBS: ainda preciso realizar algumas otimizações para funcionar em aparelho com configurações de entrada.
 
 
-<img src="views/image/run.gif">
+<img src="views/image/run.gif" height="500">
